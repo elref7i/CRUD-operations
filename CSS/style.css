@@ -1,0 +1,32 @@
+
+.form-control:focus{
+    box-shadow: none;
+}
+.card{
+    background-color: #4f4f4f64;
+}
+.card-body{
+    background: linear-gradient(#05050564 0% ,#08080864 70%  , transparent);
+}
+.card-update{
+    color: #e5ac02;
+    transition: color .4s , scale 4.s;
+
+}
+.card-update:hover{
+    color: #ffc107;
+    scale: 1.1;
+}
+.card-delete{
+    color: #dc3545;
+    transition: color .4s , scale 4.s;
+}
+.card-delete:hover{
+    color: #f11228;
+    scale: 1.1;
+}
+.card-image{
+    width: 380px;
+    height: 300px;
+    object-fit: contain;
+}

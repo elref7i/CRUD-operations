@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD Operations</title>
+  <link rel="stylesheet" href="/CSS/all.min.css">
+  <link rel="stylesheet" href="/CSS/bootstrap.min.css">
+  <!-- *==> Link Bootstrap -->
+  <link rel="stylesheet" href="/CSS/style.css">
+  <!-- *==> Link Stylesheet -->
+</head>
+
+<body>
+  <!--^ >========> Start Intro -->
+  <!-- <section class="intro | text-center py-5">
+        <div class="container">
+            <h1 class="mb-3">Hello <span id="span-user">User</span></h1>
+            <form action="">
+                <input type="text" class="form-control mb-5" id="input-user-name" aria-label="Enter the User Name"
+                    placeholder="User Name" oninput="setprogess()">
+                <button type="button" id="save" class="btn btn-primary" role="button" onclick="saveUser()">Save
+                    User</button>
+                <button type="button" id="delete" class="btn btn-danger" role="button" onclick="removename()">Forget
+                    User</button>
+            </form>
+        </div>
+    </section> -->
+  <!--^ >========> End Intro -->
+  <!--!  >========> Start Product Management System -->
+  <main>
+    <section class="crud-operation | bg-dark py-5 text-light fw-bold">
+      <div class="container">
+        <h1 class="text-light mb-5 h2 text-center">Product Management System</h1>
+        <form action="">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control bg-dark text-light fw-bold" id="nameProduct" placeholder="Name"
+              autocomplete="off" oninput="validate(nameRegex,nameProduct)">
+            <label for="nameProduct">Name</label>
+            <p class="error visually-hidden text-danger mt-1" id="validError">Please enter more than 4 characters</p>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control bg-dark text-light" id="categoryInput" placeholder="Category"
+              list="Category" autocomplete="off" oninput="validate(categoryRegex,categoryInput)">
+            <label for="categoryInput">Category</label>
+            <p class="error visually-hidden text-danger mt-1" id="validError">Please enter more than 4 characters</p>
+            <datalist id="Category">
+              <option>mobile</option>
+              <option>labtop</option>
+              <option>Screen</option>
+              <option>Camera</option>
+              <option>Clothes</option>
+            </datalist>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control bg-dark text-light fw-bold" id="priceProduct" placeholder="Price"
+              oninput="validate(priceRegex,priceProduct)">
+            <label for="priceProduct">Price</label>
+            <p class="error visually-hidden text-danger mt-1" id="validError">Please enter a valid number</p>
+          </div>
+          <div class="form-floating mb-3">
+            <textarea class="form-control bg-dark text-light fw-bold" id="descriptionProduct" placeholder="Description"
+              oninput="validate(descriptionRegex,descriptionProduct)"></textarea>
+            <label for="descriptionProduct">Description</label>
+            <p class="error visually-hidden text-danger mt-1" id="validError">Please enter more than 25 characters</p>
+          </div>
+          <div class="mb-3">
+            <input type="file" class="form-control bg-dark text-white" id="imageInput" accept="image/*">
+          </div>
+          <button type="button" class="btn btn-primary mb-4" id="addButton" onclick="addProduct()">Add Product</button>
+          <button type="button" class="btn btn-info d-none mb-4" id="updateButton" onclick="updateProduct()">Update
+            Product</button>
+          <input type="search" id="searchInput" class="form-control bg-dark text-light fw-bold w-75 m-auto"
+            placeholder="Search ..." oninput="searchProduct()">
+        </form>
+        <div class="row gx-0 gy-4 gx-md-4 py-5" id="allCard">
+        </div>
+      </div>
+    </section>
+  </main>
+  <!--!  >========> End Product Management System -->
+
+  <script src="/JS/index.js"></script>
+  <script src="/JS/bootstrap.bundle.js"></script>
+</body>
+
+</html>
