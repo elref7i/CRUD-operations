@@ -43,7 +43,7 @@ All product data is stored locally using the browser’s **LocalStorage**, ensur
 
 1. Clone the repository to your local machine.
    ```bash
-   git clone https://github.com/your-username/your-repository.git
+   https://github.com/elref7i/CRUD-operations.git
    ```
 2. Open `index.html` in a web browser.
 3. Start adding products by filling in the required fields and clicking the **Add Product** button.
