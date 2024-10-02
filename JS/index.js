@@ -1,4 +1,3 @@
-
 // ^ >=======> Start Intro
 // var spanUser = document.getElementById("span-user");
 // var inputUserName = document.getElementById("input-user-name") ;
@@ -8,7 +7,7 @@
 // spanUser.innerHTML = localStorage.getItem("username") || "User";
 // inputUserName.value = localStorage.getItem("nameinput") ;
 // function saveUser(){
-    
+
 //     localStorage.setItem("username",inputUserName.value);
 //     spanUser.innerHTML = inputUserName.value;
 
@@ -24,7 +23,7 @@
 // spanUser.innerHTML = sessionStorage.getItem("username") || "User";
 // inputUserName.value = sessionStorage.getItem("nameinput") ;
 // function saveUser(){
-    
+
 //     sessionStorage.setItem("username",inputUserName.value);
 //     spanUser.innerHTML = inputUserName.value;
 
@@ -38,88 +37,84 @@
 
 // ^ >=======> End Intro
 
-
 ////////////////////
 
 // !!! >=======> Start Product Management System
 
 // *** HTML elements
 
- //? ليه هنا ممش بجيب القيمه بتاعه الحقل واحفظها فى متيغر 
-///* لانى اول ما تفتح الموقع او تعمل تحديث لى الموقع بيكون الحقل فاضى فيكون القيمه بى NULL 
+//? ليه هنا ممش بجيب القيمه بتاعه الحقل واحفظها فى متيغر
+///* لانى اول ما تفتح الموقع او تعمل تحديث لى الموقع بيكون الحقل فاضى فيكون القيمه بى NULL
 
-    var nameProduct = document.getElementById("nameProduct");
+var nameProduct = document.getElementById('nameProduct');
 
-    var categoryInput = document.getElementById("categoryInput");
+var categoryInput = document.getElementById('categoryInput');
 
-    var priceProduct = document.getElementById("priceProduct");
+var priceProduct = document.getElementById('priceProduct');
 
-    var descriptionProduct = document.getElementById("descriptionProduct");
+var descriptionProduct = document.getElementById('descriptionProduct');
 
-    var imageInput = document.getElementById("imageInput");
+var imageInput = document.getElementById('imageInput');
 
-    var productContainer = document.getElementById("allCard");
+var productContainer = document.getElementById('allCard');
 
-    var searchInput = document.getElementById("searchInput");
+var searchInput = document.getElementById('searchInput');
 
-    var validError = document.getElementById("validError");
+var validError = document.getElementById('validError');
 
-    var addButton = document.getElementById("addButton");
+var addButton = document.getElementById('addButton');
 
-    var updateButton = document.getElementById("updateButton");
+var updateButton = document.getElementById('updateButton');
 
-
-
-    
-    
 // ^^^ App variables
 var updatedIndex;
 var nameRegex = /^[A-Za-z][a-z]{3,}([1-9][1-9])?$/;
 var categoryRegex = /^[A-Za-z][a-z]{3,}$/;
-var priceRegex = /^([0-9]|[1-9][0-9]|100|[1-9][0-9][0-9]|1000|[1-9][0-9][0-9][0-9]|10000|[1-9][0-9][0-9][0-9][0-9]|10000)$/;
-var descriptionRegex= /^[a-z\s]{25,100}$/;
+var priceRegex =
+  /^([0-9]|[1-9][0-9]|100|[1-9][0-9][0-9]|1000|[1-9][0-9][0-9][0-9]|10000|[1-9][0-9][0-9][0-9][0-9]|10000)$/;
+var descriptionRegex = /^[a-z\s]{25,100}$/;
 
-productList =  JSON.parse(localStorage.getItem("products")) || [];
+productList = JSON.parse(localStorage.getItem('products')) || [];
 displayAllProduct();
 
-// &&& Functions 
-function addProduct(){
-    if(validate(nameRegex,nameProduct)&&
-    validate(categoryRegex,categoryInput)&&
-    validate(priceRegex,priceProduct)&&
-    validate(descriptionRegex,descriptionProduct)){
-        var product = {
-            name : nameProduct.value,
-            category:categoryInput.value,
-            price:priceProduct.value,
-            descriptionProduct:descriptionProduct.value,
-            imageInput:"/images/"+imageInput.files[0].name
-        };
-    
-        productList.push(product);
-        localStorage.setItem("products",JSON.stringify(productList));
-        displayProduct(productList.length-1);
-        clearvalue();
-    }else{
-        alert("8lt");
-    }
-    
-};
+// &&& Functions
+function addProduct() {
+  if (
+    validate(nameRegex, nameProduct) &&
+    validate(categoryRegex, categoryInput) &&
+    validate(priceRegex, priceProduct) &&
+    validate(descriptionRegex, descriptionProduct)
+  ) {
+    var product = {
+      name: nameProduct.value,
+      category: categoryInput.value,
+      price: priceProduct.value,
+      descriptionProduct: descriptionProduct.value,
+      imageInput: '/images/' + imageInput.files[0].name,
+    };
 
-function clearvalue(){
-    nameProduct.value = null
-    categoryInput.value = null
-    priceProduct.value = null
-    descriptionProduct.value = null
-    imageInput.value = null
-    nameProduct.classList.remove("is-valid");
-    categoryInput.classList.remove("is-valid");
-    priceProduct.classList.remove("is-valid");
-    descriptionProduct.classList.remove("is-valid");
+    productList.push(product);
+    localStorage.setItem('products', JSON.stringify(productList));
+    displayProduct(productList.length - 1);
+    clearvalue();
+  } else {
+    alert('8lt');
+  }
 }
-function displayProduct(index){
-var productHTML = 
-`
+
+function clearvalue() {
+  nameProduct.value = null;
+  categoryInput.value = null;
+  priceProduct.value = null;
+  descriptionProduct.value = null;
+  imageInput.value = null;
+  nameProduct.classList.remove('is-valid');
+  categoryInput.classList.remove('is-valid');
+  priceProduct.classList.remove('is-valid');
+  descriptionProduct.classList.remove('is-valid');
+}
+function displayProduct(index) {
+  var productHTML = `
 <div class="col-12 col-md-6 col-lg-4">
         <div class="card position-relative">
             <div class="parent-image | d-flex justify-content-center align-items-center rounded overflow-hidden bg-light">
@@ -158,86 +153,90 @@ var productHTML =
             </div>
         </div>
         </div>
-`
-    productContainer.innerHTML += productHTML;
+`;
+  productContainer.innerHTML += productHTML;
 }
-function displayAllProduct(){
-    for (var i = 0 ;  i < productList.length ;i++ ){
-        displayProduct(i);
-    }
+function displayAllProduct() {
+  for (var i = 0; i < productList.length; i++) {
+    displayProduct(i);
+  }
 }
-// 
-function deleteProduct(index){
-    //* Delete from productList
-    productList.splice(index,1); 
-    //* Delete from LocalStorge
-    localStorage.setItem("products",JSON.stringify(productList));
-    //* Delete from HTML
-    productContainer.innerHTML=""
-    displayAllProduct();
-
+//
+function deleteProduct(index) {
+  //* Delete from productList
+  productList.splice(index, 1);
+  //* Delete from LocalStorge
+  localStorage.setItem('products', JSON.stringify(productList));
+  //* Delete from HTML
+  productContainer.innerHTML = '';
+  displayAllProduct();
 }
-// search ==>realtime search وانا بكتب الحروف يبحث عن المنتج 
+// search ==>realtime search وانا بكتب الحروف يبحث عن المنتج
 // search ==>Search    بكتب المنتج وبعدين اضغط اعمل بحث
-function searchProduct(){
-    productContainer.innerHTML = "";
-    for( var i =0; i<productList.length;i++){
-        if(productList[i].name.toLowerCase().includes(searchInput.value.toLowerCase())){
-            displayProduct(i);
-        }
+function searchProduct() {
+  productContainer.innerHTML = '';
+  for (var i = 0; i < productList.length; i++) {
+    if (
+      productList[i].name
+        .toLowerCase()
+        .includes(searchInput.value.toLowerCase())
+    ) {
+      displayProduct(i);
     }
+  }
 }
-function updateProduct(){
-}
+function updateProduct() {}
 
 // ^ Validation
 
-
-function  validate(regex,ele){
-    if(regex.test(ele.value)){
-        ele.classList.add("is-valid");
-        ele.classList.remove("is-invalid");
-        ele.nextElementSibling.nextElementSibling.classList.add("visually-hidden");
-        return true;
-    }
-        ele.classList.add("is-invalid");
-        ele.classList.remove("is-valid");
-        ele.nextElementSibling.nextElementSibling.classList.remove("visually-hidden");
-        return false;
+function validate(regex, ele) {
+  if (regex.test(ele.value)) {
+    ele.classList.add('is-valid');
+    ele.classList.remove('is-invalid');
+    ele.nextElementSibling.nextElementSibling.classList.add('visually-hidden');
+    return true;
+  }
+  ele.classList.add('is-invalid');
+  ele.classList.remove('is-valid');
+  ele.nextElementSibling.nextElementSibling.classList.remove('visually-hidden');
+  return false;
 }
-function getProductInfo(index){
-    updatedIndex = index;
-    nameProduct.value = productList[index].name;
-    categoryInput.value = productList[index].category;
-    descriptionProduct.value = productList[index].descriptionProduct;
-    priceProduct.value = productList[index].price;
-    addButton.classList.add("d-none");
-    updateButton.classList.remove("d-none");
+function getProductInfo(index) {
+  updatedIndex = index;
+  nameProduct.value = productList[index].name;
+  categoryInput.value = productList[index].category;
+  descriptionProduct.value = productList[index].descriptionProduct;
+  priceProduct.value = productList[index].price;
+  addButton.classList.add('d-none');
+  updateButton.classList.remove('d-none');
 }
-function updateProduct(){
-    if(validate(nameRegex,nameProduct)&&
-    validate(categoryRegex,categoryInput)&&
-    validate(priceRegex,priceProduct)&&
-    validate(descriptionRegex,descriptionProduct)){
-        console.log(updatedIndex);
-        productList[updatedIndex].name = nameProduct.value;
-        productList[updatedIndex].category = categoryInput.value ;
-        productList[updatedIndex].descriptionProduct = descriptionProduct.value  ;
-        productList[updatedIndex].price = priceProduct.value;
-        if(imageInput.files.length > 0){
-            productList[updatedIndex].imageInput= "/images/"+imageInput.files[0].name;
-        }
-        updateButton.classList.add("d-none");
-        addButton.classList.remove("d-none");
-        //*Update LoclaStorge 
-        localStorage.setItem("products",JSON.stringify(productList));
-        //* Update from HTML
-        productContainer.innerHTML=""
-        displayAllProduct();
-        clearvalue();
-    }else{
-        alert("8lt");
+function updateProduct() {
+  if (
+    validate(nameRegex, nameProduct) &&
+    validate(categoryRegex, categoryInput) &&
+    validate(priceRegex, priceProduct) &&
+    validate(descriptionRegex, descriptionProduct)
+  ) {
+    console.log(updatedIndex);
+    productList[updatedIndex].name = nameProduct.value;
+    productList[updatedIndex].category = categoryInput.value;
+    productList[updatedIndex].descriptionProduct = descriptionProduct.value;
+    productList[updatedIndex].price = priceProduct.value;
+    if (imageInput.files.length > 0) {
+      productList[updatedIndex].imageInput =
+        '/images/' + imageInput.files[0].name;
     }
+    updateButton.classList.add('d-none');
+    addButton.classList.remove('d-none');
+    //*Update LoclaStorge
+    localStorage.setItem('products', JSON.stringify(productList));
+    //* Update from HTML
+    productContainer.innerHTML = '';
+    displayAllProduct();
+    clearvalue();
+  } else {
+    alert('8lt');
+  }
 }
 
 // !!! >=======> End Product Management System
