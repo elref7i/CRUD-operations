@@ -48,3 +48,7 @@ All product data is stored locally using the browser’s **LocalStorage**, ensur
 2. Open `index.html` in a web browser.
 3. Start adding products by filling in the required fields and clicking the **Add Product** button.
 4. The added products will be displayed below, and you can edit or delete them as needed.
+
+## Live Demo
+You can view the live demo of the project here: [BookMarker Live Demo](https://elref7i.github.io/CRUD-operations/)
+
